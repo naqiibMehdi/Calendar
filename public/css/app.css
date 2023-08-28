@@ -1,0 +1,32 @@
+*, *::before, *::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+h1{
+  margin: 15px 0px;
+  margin-left: 15px;
+}
+
+.table__calendar{
+  width: 100%;
+  height: calc(100vh - 68px);
+  border-collapse: collapse;
+  font-size: 18px;
+}
+
+.table__week td{
+  width: calc(100% / 7);
+  height: 20%;
+  border: #CCC solid 1px;
+  padding: 10px;
+  vertical-align: top;
+}
+
+.table__6weeks td{
+  height: calc(100% / 6);
+}
+
+.calendar__day{
+  font-weight: bold;
+}

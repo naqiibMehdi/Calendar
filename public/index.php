@@ -1,0 +1,34 @@
+<?php
+  use Calendar\Month;
+  require "../vendor/autoload.php";
+  $initialDate = new Month();
+  $lastMonday = $initialDate->getStartDay()->modify("last monday");
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/app.css">
+  <title>Calendrier</title>
+</head>
+<body>
+  <h1><?= $initialDate->toString() ?></h1>
+
+  <table class="table__calendar">
+    <?php for($semaine = 0; $semaine < $initialDate->getWeeks(); $semaine++): ?>
+      <tr class="table__week table__<?= $initialDate->getWeeks() ?>weeks">
+        <?php foreach($initialDate->days as $k => $day): ?>
+          <td>
+            <?php if($semaine === 0): ?>
+              <div class="calendar__day"><?= $day ?></div>
+            <?php endif ?>
+            <div><?= (clone $lastMonday)->modify("+" . $k + ($semaine * 7) . " day")->format("d"); ?></div>
+          </td>
+        <?php endforeach ?>
+      </tr>
+    <?php endfor; ?>
+  </table>
+</body>
+</html>

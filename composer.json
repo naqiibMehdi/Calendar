@@ -1,0 +1,11 @@
+{
+    "name": "mib/calendar",
+    "autoload": {
+        "psr-4": {
+            "Calendar\\": "src/"
+        }
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^6.3"
+    }
+}
