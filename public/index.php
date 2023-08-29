@@ -1,7 +1,13 @@
 <?php
   use Calendar\Month;
   require "../vendor/autoload.php";
-  $initialDate = new Month($_GET["month"] ?? null, $_GET["year"] ?? null);
+  
+  try {
+    $initialDate = new Month($_GET["month"] ?? null, $_GET["year"] ?? null);
+  } catch (\Exception $e) {
+      echo $e->getMessage();
+  }
+
   $lastMonday = $initialDate->getStartDay()->modify("last monday");
 ?>
 

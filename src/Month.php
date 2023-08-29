@@ -20,6 +20,10 @@ class Month{
       $year = (int)date("Y");
     }
 
+    if($month < 1 || $month > 12){
+      throw new Exception("le mois $month n'est pas compris dans le calendrier");
+    }
+
     $this->month = $month;
     $this->year = $year;
   }
