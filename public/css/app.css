@@ -30,3 +30,7 @@ h1{
 .calendar__day{
   font-weight: bold;
 }
+
+.calendar_not_same_date{
+  opacity: 0.3;
+}

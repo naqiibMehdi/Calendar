@@ -24,7 +24,7 @@
             <?php if($semaine === 0): ?>
               <div class="calendar__day"><?= $day ?></div>
             <?php endif ?>
-            <div><?= (clone $lastMonday)->modify("+" . $k + ($semaine * 7) . " day")->format("d"); ?></div>
+            <div class="calendar_number_day <?= $initialDate->isNotSameDate((clone $lastMonday)->modify("+" . $k + ($semaine * 7) . " day")) ? "calendar_not_same_date" : '' ?>"><?= (clone $lastMonday)->modify("+" . $k + ($semaine * 7) . " day")->format("d"); ?></div>
           </td>
         <?php endforeach ?>
       </tr>

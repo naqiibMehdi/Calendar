@@ -45,4 +45,9 @@ class Month{
     }
     return $nbWeeks + 1;
   }
+
+  public function isNotSameDate(\DateTime $date): bool
+  {
+    return $this->getStartDay()->format("Y-m") !== $date->format("Y-m");
+  }
 }
