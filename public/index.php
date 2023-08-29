@@ -1,7 +1,7 @@
 <?php
   use Calendar\Month;
   require "../vendor/autoload.php";
-  $initialDate = new Month();
+  $initialDate = new Month($_GET["month"] ?? null, $_GET["year"] ?? null);
   $lastMonday = $initialDate->getStartDay()->modify("last monday");
 ?>
 
@@ -17,8 +17,8 @@
     <header>
       <h1 class="header_title"><?= $initialDate->toString() ?></h1>
       <div class="header_links">
-        <a href="">&lt;</a>
-        <a href="">&gt;</a>
+        <a href="?<?= $initialDate->urlPreviousMonth() ?>">&lt;</a>
+        <a href="?<?= $initialDate->urlNextMonth() ?>">&gt;</a>
       </div>
     </header>
 

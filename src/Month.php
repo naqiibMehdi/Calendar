@@ -22,7 +22,6 @@ class Month{
 
     $this->month = $month;
     $this->year = $year;
-
   }
 
   public function toString(): string
@@ -49,5 +48,33 @@ class Month{
   public function isNotSameDate(\DateTime $date): bool
   {
     return $this->getStartDay()->format("Y-m") !== $date->format("Y-m");
+  }
+
+  public function urlNextMonth(): string
+  {
+    $month = $this->month;
+    $year = $this->year;
+
+    $month++;
+
+    if($month > 12){
+      $month = 1;
+      $year += 1;
+    }
+    return http_build_query(["month" => $month , "year" => $year]);
+  }
+
+  public function urlPreviousMonth(): string
+  {
+    $month = $this->month;
+    $year = $this->year;
+
+    $month--;
+
+    if($month < 1){
+      $month = 12;
+      $year -= 1;
+    }
+    return http_build_query(["month" => $month , "year" => $year]);
   }
 }

@@ -30,7 +30,7 @@ header{
 
 .table__calendar{
   width: 100%;
-  height: calc(100vh - 86px);
+  height: calc(100vh - 68px);
   border-collapse: collapse;
   font-size: 18px;
 }
