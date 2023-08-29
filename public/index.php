@@ -9,10 +9,13 @@
   } catch (\Exception $e) {
     echo $e->getMessage();
   }
-  $lastMonday = $initialDate->getStartDay()->modify("last monday");
+  $weeks = $initialDate->getWeeks();
+  $start = $initialDate->getStartDay();
+  $start = $start->format("N") === "1" ? $start : $initialDate->getStartDay()->modify("last monday");
+  $end = (clone $start)->modify("+" . (6 + 7 * ($weeks - 1)) . " days");
   
   $event = new Event();
-  $event->getAllEvents($initialDate->getStartDay(), (clone $initialDate)->getStartDay()->modify("+1 month -1 day"));
+  $event->getAllEvents($start, $end);
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +39,7 @@
     <?php for($semaine = 0; $semaine < $initialDate->getWeeks(); $semaine++): ?>
       <tr class="table__week table__<?= $initialDate->getWeeks() ?>weeks">
         <?php foreach($initialDate->days as $k => $day):
-              $addDays = (clone $lastMonday)->modify("+" . $k + ($semaine * 7) . " day");
+              $addDays = (clone $start)->modify("+" . $k + ($semaine * 7) . " days");
         ?>
           <td>
             <?php if($semaine === 0): ?>
