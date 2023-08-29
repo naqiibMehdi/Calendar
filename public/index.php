@@ -14,7 +14,13 @@
   <title>Calendrier</title>
 </head>
 <body>
-  <h1><?= $initialDate->toString() ?></h1>
+    <header>
+      <h1 class="header_title"><?= $initialDate->toString() ?></h1>
+      <div class="header_links">
+        <a href="">&lt;</a>
+        <a href="">&gt;</a>
+      </div>
+    </header>
 
   <table class="table__calendar">
     <?php for($semaine = 0; $semaine < $initialDate->getWeeks(); $semaine++): ?>
