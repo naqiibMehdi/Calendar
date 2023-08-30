@@ -54,3 +54,11 @@ header{
 .calendar_not_same_date{
   opacity: 0.3;
 }
+
+.calendar__events{
+  margin-top: 10px;
+}
+
+.calendar__events span{
+  font-weight: 700;
+}

@@ -15,7 +15,7 @@
   $end = (clone $start)->modify("+" . (6 + 7 * ($weeks - 1)) . " days");
   
   $event = new Event();
-  $event->getAllEvents($start, $end);
+  $eventByDate = $event->getAllEventsByDate($start, $end);
 ?>
 
 <!DOCTYPE html>
@@ -40,12 +40,18 @@
       <tr class="table__week table__<?= $initialDate->getWeeks() ?>weeks">
         <?php foreach($initialDate->days as $k => $day):
               $addDays = (clone $start)->modify("+" . $k + ($semaine * 7) . " days");
+              $everyEvent = $eventByDate[$addDays->format("Y-m-d")] ?? [];
         ?>
           <td>
             <?php if($semaine === 0): ?>
               <div class="calendar__day"><?= $day ?></div>
             <?php endif ?>
             <div class="calendar_number_day <?= $initialDate->isNotSameDate($addDays) ? "calendar_not_same_date" : '' ?>"><?= $addDays->format("d"); ?></div>
+            <div class="calendar__events">
+              <?php foreach($everyEvent as $e): ?>
+                <p><span><?= date("H:i", $e["start"]) ?></span> - <?= $e["title"] ?></p>
+              <?php endforeach ?>
+            </div>
           </td>
         <?php endforeach ?>
       </tr>
