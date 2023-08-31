@@ -19,17 +19,13 @@
 
   require "../views/header.php";
 ?>
-    <header>
-      <h1>Mon Calendrier</h1>
-    </header>
-
-    <section>
-      <h2 class="section_title"><?= $initialDate->toString() ?></h2>
-      <div class="section_links">
-        <a href="?<?= $initialDate->urlPreviousMonth() ?>">&lt;</a>
-        <a href="?<?= $initialDate->urlNextMonth() ?>">&gt;</a>
-      </div>
-    </section>
+  <section>
+    <h2 class="section_title"><?= $initialDate->toString() ?></h2>
+    <div class="section_links">
+      <a href="?<?= $initialDate->urlPreviousMonth() ?>">&lt;</a>
+      <a href="?<?= $initialDate->urlNextMonth() ?>">&gt;</a>
+    </div>
+  </section>
 
   <table class="table__calendar">
     <?php for($semaine = 0; $semaine < $initialDate->getWeeks(); $semaine++): ?>

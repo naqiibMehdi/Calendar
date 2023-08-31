@@ -7,3 +7,6 @@
   <title><?= $title ?? "Mon Calendrier" ?></title>
 </head>
 <body>
+  <header>
+    <h1>Mon Calendrier</h1>
+  </header>
