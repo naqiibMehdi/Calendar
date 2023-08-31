@@ -16,24 +16,20 @@
   
   $event = new Event();
   $eventByDate = $event->getAllEventsByDate($start, $end);
-?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/app.css">
-  <title>Calendrier</title>
-</head>
-<body>
+  require "../views/header.php";
+?>
     <header>
-      <h1 class="header_title"><?= $initialDate->toString() ?></h1>
-      <div class="header_links">
+      <h1>Mon Calendrier</h1>
+    </header>
+
+    <section>
+      <h2 class="section_title"><?= $initialDate->toString() ?></h2>
+      <div class="section_links">
         <a href="?<?= $initialDate->urlPreviousMonth() ?>">&lt;</a>
         <a href="?<?= $initialDate->urlNextMonth() ?>">&gt;</a>
       </div>
-    </header>
+    </section>
 
   <table class="table__calendar">
     <?php for($semaine = 0; $semaine < $initialDate->getWeeks(); $semaine++): ?>
@@ -57,5 +53,4 @@
       </tr>
     <?php endfor; ?>
   </table>
-</body>
-</html>
+<?php require "../views/footer.php"; ?>

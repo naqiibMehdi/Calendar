@@ -2,21 +2,30 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family:'Courier New', Courier, monospace
 }
+
 header{
+  text-align: center;
+  background-color: rgba(43, 115, 223, 0.822);
+  color: white;
+  padding: 10px 0
+}
+
+section{
   display: flex;
   justify-content: space-between;
   margin: 15px 20px;  
 }
 
-.header_links{
+.section_links{
   width: 80px;
   display: flex;
   align-content: center;
   justify-content: space-between;
 }
 
-.header_links a{
+.section_links a{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,13 +33,13 @@ header{
   font-size: 18px;
   text-decoration: none;
   color: white;
-  background-color: blue;
+  background-color: rgba(43, 115, 223, 0.822);
   border-radius: 5px;
 }
 
 .table__calendar{
   width: 100%;
-  height: calc(100vh - 68px);
+  height: calc(100vh - 114px);
   border-collapse: collapse;
   font-size: 18px;
 }
@@ -56,7 +65,8 @@ header{
 }
 
 .calendar__events{
-  margin-top: 10px;
+  margin-top: 8px;
+  font-size: 15px;
 }
 
 .calendar__events span{
