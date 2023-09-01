@@ -1,5 +1,9 @@
 <?php
   require "../vendor/autoload.php";
+  use Calendar\Validator;
+  $validate = (new Validator())->validates($_POST);
+  
+  
   $title = "Créer un évènement";
   require "../views/header.php";
 ?>
@@ -23,6 +27,5 @@
       <button type="submit">Ajouter</button>
     </form>
   </section>
-
 
 <?php require "../views/footer.php"; ?>
