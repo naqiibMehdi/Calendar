@@ -1,7 +1,6 @@
 <?php
   require "../vendor/autoload.php";
   $title = "Créer un évènement";
-  dump($_POST);
   require "../views/header.php";
 ?>
   <section class="section_event">
@@ -9,12 +8,11 @@
 
     <form action="" method="post">
       <div class="form_date_start">
-        <input type="date" name="start_date">
-        <input type="time" name="start_time">
+        <input type="date" name="start_date" value="<?= date("Y-m-d") ?>">
       </div>
-      <div class="form_date_end">
-        <input type="date" name="end_date">
-        <input type="time" name="end_time">
+      <div class="form_time">
+        <input type="time" name="start_time" value="07:00">
+        <input type="time" name="end_time" value="23:00">
       </div>
       <div class="form_date_title">
         <input type="text" name="title" placeholder="Titre de l'évènement">

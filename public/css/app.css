@@ -97,7 +97,6 @@ section{
 
 form input{
   height: 40px;
-   
 }
 
 form textarea{
@@ -108,26 +107,22 @@ form textarea, form input{
   padding: 5px 5px;
   border-radius: 5px;
   outline: none;
-  border: solid #ccc 1px;
+  border: solid #ccc 2px;
+  width: 100%;
 }
 
 form textarea:focus, form input:focus{
   border-color:rgba(43, 115, 223, 0.822)
 }
 
-.form_date_start, .form_date_end{
+.form_time{
   display: flex;
-  gap: 15px
+  justify-content: space-between;
 }
 
-.form_date_start input:first-child, 
-.form_date_end input:first-child{
-  width: 30%;
-}
 
-.form_date_title input, 
-.form_date_description textarea{
-  width: 100%;
+.form_time input{
+  width: 45%;
 }
 
 .form_date_title input::placeholder, 
