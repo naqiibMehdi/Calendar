@@ -42,11 +42,18 @@ class Month{
   {
     $start = $this->getStartDay();
     $end = (clone $start)->modify("+1 month -1 day");
-    $nbWeeks = (int)$end->format("W") - (int)$start->format("W");
+    
+    if($end->format("W") === "01"){
+      $end = $end->modify("-7 days");
+      $nbWeeks = ((int)$end->format("W") - (int)$start->format("W")) + 2;
+    }else{
+      $nbWeeks = ((int)$end->format("W") - (int)$start->format("W")) + 1;
+    }
+    
     if($nbWeeks < 0){
       $nbWeeks = (int)$end->format("W");
     }
-    return $nbWeeks + 1;
+    return $nbWeeks;
   }
 
   public function isNotSameDate(\DateTime $date): bool

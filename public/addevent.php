@@ -32,12 +32,12 @@
       </div>
       <div class="form_time">
         <div>
-          <input type="time" name="start_time" value="<?= $_POST["start_time"] ?? '' ?>"><br>
+          <input type="time" name="start_time" value="<?= $_POST["start_time"] ?? '08:00' ?>"><br>
           <?php if(isset($errors["start_time"]) || isset($errors["end_time"])): ?>
             <small><?= isset($errors["start_time"]) ? $errors["start_time"] : $errors["end_time"] ?></small>
           <?php endif ?>
         </div>
-        <input type="time" name="end_time" value="<?= $_POST["end_time"] ?? '' ?>">
+        <input type="time" name="end_time" value="<?= $_POST["end_time"] ?? '23:00' ?>">
       </div>
       <div class="form_date_title">
         <input type="text" name="title" placeholder="Titre de l'évènement" value="<?= $_POST["title"] ?? '' ?>">
