@@ -20,7 +20,7 @@ class Validator{
 
   public function validate(string $field, string $method, mixed ...$params): void
   {
-    if(!isset($this->datas[$field]) || empty($this->datas[$field])){
+    if(!isset($this->datas[$field])){
       $this->errors[$field] = "le champ $field n'est pas défini";
     }else{
       call_user_func([$this, $method], $field, ...$params);

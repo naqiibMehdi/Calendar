@@ -8,8 +8,11 @@
   $event = new Event();
   $validate = (new Validator())->validates($_POST);
   $errors = [];
+
   if(empty($validate)){
     $event->create($_POST);
+    header("Location: ./index.php", true, 301);
+    exit();
   }else{
     $errors = $validate;
   }
@@ -22,22 +25,22 @@
 
     <form action="" method="post">
       <div class="form_date_start">
-        <input type="date" name="start_date" value="">
+        <input type="date" name="start_date" value="<?= $_POST["start_date"] ?? date("Y-m-d") ?>">
         <?php if(isset($errors["start_date"])): ?>
           <small><?= $errors["start_date"] ?></small>
         <?php endif ?>
       </div>
       <div class="form_time">
         <div>
-          <input type="time" name="start_time" value=""><br>
+          <input type="time" name="start_time" value="<?= $_POST["start_time"] ?? null ?>"><br>
           <?php if(isset($errors["start_time"])): ?>
             <small><?= $errors["start_time"] ?></small>
           <?php endif ?>
         </div>
-        <input type="time" name="end_time" value="">
+        <input type="time" name="end_time" value="<?= $_POST["end_time"] ?? null ?>">
       </div>
       <div class="form_date_title">
-        <input type="text" name="title" placeholder="Titre de l'évènement">
+        <input type="text" name="title" placeholder="Titre de l'évènement" value="<?= $_POST["title"] ?? null ?>">
         <?php if(isset($errors["title"])): ?>
           <small><?= $errors["title"] ?></small>
         <?php endif ?>
