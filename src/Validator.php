@@ -7,18 +7,14 @@ class Validator{
   private $errors = [];
   private $datas = [];
 
-  public function validates(array $datas)
+  public function validates(array $datas): array
   {
     $this->datas = $datas;
     $this->validate("title", "length", 3);
     $this->validate("start_date", "checkDate");
     $this->validate("start_time", "logicTime", "end_time");
 
-    if(!empty($this->errors)){
-      return $this->errors;
-    }
-
-    return true;
+    return $this->errors;
   
   }
 
@@ -31,16 +27,16 @@ class Validator{
     }
   }
 
-  public function length(string $field, int $size): false
+  public function length(string $field, int $size): bool
   {
     if(mb_strlen($this->datas[$field]) < $size){
       $this->errors[$field] = "Le titre doit être supérieur ou égale à $size caractères";
       return false;
     }
-    return true;
+    return true; 
   }
 
-  public function checkDate(string $field)
+  public function checkDate(string $field): bool
   {
     if(!preg_match("#^[\d]{4}(-[\d]{2}){2}$#", $this->datas[$field])){
       $this->errors[$field] = "La date n'est pas au bon format";
@@ -49,7 +45,7 @@ class Validator{
     return true;
   }
 
-  public function checkTime(string $field)
+  public function checkTime(string $field): bool
   {
     if(!preg_match("#^[\d]{2}:[\d]{2}$#", $this->datas[$field])){
       $this->errors[$field] = "Le temps n'est pas au bon format";
@@ -58,7 +54,7 @@ class Validator{
     return true; 
   }
 
-  public function logicTime($startTime, $endTime)
+  public function logicTime($startTime, $endTime): bool
   {
     if($this->checkTime($startTime) && $this->checkTime($endTime)){
       $start = \DateTime::createFromFormat("H:i", $this->datas[$startTime]);

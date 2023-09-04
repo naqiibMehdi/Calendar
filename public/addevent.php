@@ -2,6 +2,12 @@
   require "../vendor/autoload.php";
   use Calendar\Validator;
   $validate = (new Validator())->validates($_POST);
+
+  if(empty($validate)){
+
+  }else{
+    dump($validate);
+  }
   
   
   $title = "Créer un évènement";
@@ -12,11 +18,11 @@
 
     <form action="" method="post">
       <div class="form_date_start">
-        <input type="date" name="start_date" value="<?= date("Y-m-d") ?>">
+        <input type="date" name="start_date" value="">
       </div>
       <div class="form_time">
-        <input type="time" name="start_time" value="07:00">
-        <input type="time" name="end_time" value="23:00">
+        <input type="time" name="start_time" value="">
+        <input type="time" name="end_time" value="">
       </div>
       <div class="form_date_title">
         <input type="text" name="title" placeholder="Titre de l'évènement">
