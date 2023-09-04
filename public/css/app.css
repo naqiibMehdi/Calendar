@@ -121,8 +121,12 @@ form textarea:focus, form input:focus{
 }
 
 
-.form_time input{
+.form_time input, .form_time div{
   width: 45%;
+}
+
+.form_time div input{
+  width: 100%;
 }
 
 .form_date_title input::placeholder, 
@@ -144,4 +148,8 @@ form button:hover{
   cursor: pointer;
   border: solid rgb(55, 55, 206) 2px;
   
+}
+
+small{
+  color: rgb(231, 70, 70);
 }
