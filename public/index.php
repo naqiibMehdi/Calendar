@@ -49,4 +49,8 @@
       </tr>
     <?php endfor; ?>
   </table>
+
+  <button class="calendar_button">
+    <a href="./addevent.php">+</a>
+  </button>
 <?php require "../views/footer.php"; ?>

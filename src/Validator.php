@@ -54,7 +54,7 @@ class Validator{
     return true; 
   }
 
-  public function logicTime($startTime, $endTime): bool
+  public function logicTime(string $startTime, string $endTime): bool
   {
     if($this->checkTime($startTime) && $this->checkTime($endTime)){
       $start = \DateTime::createFromFormat("H:i", $this->datas[$startTime]);
