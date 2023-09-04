@@ -23,8 +23,20 @@ class Event {
     {
       $start = $start->getTimestamp();
       $end = $end->getTimestamp();
-      $query = $this->pdo->query("SELECT * FROM events WHERE start BETWEEN $start AND $end");
+      $query = $this->pdo->query("SELECT * FROM events WHERE start BETWEEN $start AND $end ORDER BY start ASC");
       return $query->fetchAll();
+    }
+
+    public function create(array $datas)
+    {
+      $query = "INSERT INTO events(title, description, start, end) VALUES(?, ?, ?, ?)";
+      $statement = $this->pdo->prepare($query);
+      $statement->execute([
+        $datas["title"],
+        $datas["description"],
+        (new \DateTime($datas["start_date"] . " " . $datas["start_time"]))->getTimestamp(),
+        (new \DateTime($datas["start_date"] . " " . $datas["end_time"]))->getTimestamp(),
+      ]);
     }
 
     public function getAllEventsByDate(DateTime $start, DateTime $end): array

@@ -3,10 +3,13 @@
   $title = "Créer un évènement";
 
   use Calendar\Validator;
+  use Calendar\Event;
+
+  $event = new Event();
   $validate = (new Validator())->validates($_POST);
   $errors = [];
   if(empty($validate)){
-
+    $event->create($_POST);
   }else{
     $errors = $validate;
   }
