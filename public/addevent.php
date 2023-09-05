@@ -9,12 +9,14 @@
   $validate = (new Validator())->validates($_POST);
   $errors = [];
 
-  if(empty($validate)){
-    $event->create($_POST);
-    header("Location: ./index.php", true, 301);
-    exit();
-  }else{
-    $errors = $validate;
+  if($_SERVER["REQUEST_METHOD"] === "POST"){
+    if(empty($validate)){
+      $event->create($_POST);
+      header("Location: ./index.php", true, 301);
+      exit();
+    }else{
+      $errors = $validate;
+    }
   }
   
   
