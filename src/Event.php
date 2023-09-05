@@ -39,6 +39,13 @@ class Event {
       ]);
     }
 
+    public function find(int $id): array|bool
+    {
+      $statement = $this->pdo->prepare("SELECT * FROM events WHERE id = ?");
+      $statement->execute([$id]);
+      return $statement->fetch();
+    }
+
     public function getAllEventsByDate(DateTime $start, DateTime $end): array
     {
       $events = [];

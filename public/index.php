@@ -41,7 +41,7 @@
             <div class="calendar_number_day <?= $initialDate->isNotSameDate($addDays) ? "calendar_not_same_date" : '' ?>"><?= $addDays->format("d"); ?></div>
             <div class="calendar__events">
               <?php foreach($everyEvent as $e): ?>
-                <p><span><?= date("H:i", $e["start"]) ?></span> - <?= $e["title"] ?></p>
+                <p><span><?= date("H:i", $e["start"]) ?></span> - <a href="./edit.php?id=<?= $e["id"] ?>"><?= $e["title"] ?></a></p>
               <?php endforeach ?>
             </div>
           </td>
