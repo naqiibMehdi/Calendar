@@ -2,7 +2,13 @@
   use Calendar\Event;
   require "../vendor/autoload.php";
   $event = new Event();
-  $event->find($_GET["id"]);
+  
+  if($event->find($_GET["id"])){
+
+  }else{
+    header("Location: 404.php", true, 301);
+    exit();
+  }
 
   require "../views/header.php";
 ?>
