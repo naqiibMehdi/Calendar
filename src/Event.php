@@ -56,6 +56,18 @@ class Event {
       return $event;
     }
 
+    public function update(int $id, array $datas)
+    {
+      $statement = $this->pdo->prepare("UPDATE events SET title = :title, description = :description, start = :start, end = :end WHERE id = :id");
+      $statement->execute([
+        "id" => $id,
+        "title" => $datas["title"],
+        "description" => $datas["description"],
+        "start" => (new DateTime($datas["start_date"] . " " . $datas["start_time"]))->getTimestamp(),
+        "end" => (new DateTime($datas["start_date"] . " " . $datas["end_time"]))->getTimestamp()
+      ]);
+    }
+
     public function getAllEventsByDate(DateTime $start, DateTime $end): array
     {
       $events = [];

@@ -13,12 +13,15 @@
     $datas = $event->find($id);
 
     if($_SERVER["REQUEST_METHOD"] === "POST"){
+
       if(empty($validate)){
+        $event->update($id, $_POST);
+        header("Location: index.php", true, 301);
+        exit();
 
       }else{
         $errors = $validate;
       }
-      
     }
     
   }else{
